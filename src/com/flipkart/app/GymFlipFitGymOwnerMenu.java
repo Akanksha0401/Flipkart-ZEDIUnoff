@@ -3,7 +3,7 @@ package com.flipkart.app;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Role;
 import com.flipkart.bean.User;
-import com.flipkart.bean.Gym;
+import com.flipkart.bean.GymCentre;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,7 @@ public class GymFlipFitGymOwnerMenu {
     public void displayMenu(User user, Scanner in) {
         int menuOption = 1;
         do {
-            System.out.println("\n\n ------ Gym Owner Menu Options ------ ");
+            System.out.println("\n\n ------ GymCentre Owner Menu Options ------ ");
             System.out.println("1. Add a new gym Centre");
             System.out.println("2. View Registered Gyms ");
             System.out.println("3. Register Time Slots ");
@@ -76,25 +76,25 @@ public class GymFlipFitGymOwnerMenu {
     }
 
     private void addNewGym(User user, Scanner scanner) {
-        Gym gym = new Gym();
+        GymCentre gymCentre = new GymCentre();
         System.out.print("Enter gym name: ");
-        gym.setGymName(scanner.nextLine());
+        gymCentre.setGymName(scanner.nextLine());
         System.out.print("Enter location: ");
-        gym.setLocation(scanner.nextLine());
+        gymCentre.setLocation(scanner.nextLine());
         System.out.print("Enter number of seats: ");
-        gym.setNoOfSeats(scanner.nextInt());
+        gymCentre.setNoOfSeats(scanner.nextInt());
         scanner.nextLine();
-        gym.setGymOwnerID(user.getUsername());
-        Gym.addGym(gym);
+        gymCentre.setGymOwnerID(user.getUsername());
+        GymCentre.addGym(gymCentre);
         System.out.println("New gym center added successfully.");
     }
 
     private void viewRegisteredGyms() {
-        List<Gym> gymList = Gym.getGymList();
+        List<GymCentre> gymList = GymCentre.getGymList();
         System.out.println("GymID\tName\tLocation\tNo.of available seats");
         System.out.println("-----------------------------------------------------------");
-        for (Gym gym : gymList) {
-            System.out.println(gym.getGymID() + "\t" + gym.getGymName() + "\t" + gym.getLocation() + "\t\t" + gym.getNoOfSeats());
+        for (GymCentre gymCentre : gymList) {
+            System.out.println(gymCentre.getGymID() + "\t" + gymCentre.getGymName() + "\t" + gymCentre.getLocation() + "\t\t" + gymCentre.getNoOfSeats());
         }
     }
 

@@ -2,7 +2,7 @@ package com.flipkart.app;
 
 import java.util.*;
 import com.flipkart.bean.User;
-import com.flipkart.bean.Gym;
+import com.flipkart.bean.GymCentre;
 import com.flipkart.bean.GymOwner;
 
 public class GymFlipFitAdminMenu {
@@ -10,17 +10,17 @@ public class GymFlipFitAdminMenu {
     public void displayMenu(User user, Scanner in) {
         int menuOption = 1;
         List<GymOwner> gymOwnerList = new ArrayList<>();
-        List<Gym> gymList = new ArrayList<>();
+        List<GymCentre> gymList = new ArrayList<>();
         do {
             System.out.println("\n\n --------------- Admin Menu Options --------------- ");
-            System.out.println("Gym Owner Options:");
+            System.out.println("GymCentre Owner Options:");
             System.out.println("\t1. View Pending Registration Request");
             System.out.println("\t2. Approve Registration");
             System.out.println("\t3. Approve ALL Pending Registration Requests");
-            System.out.println("Gym Options:");
-            System.out.println("\t4. View Pending Gym Registration");
-            System.out.println("\t5. Approve Gym Registration");
-            System.out.println("\t6. Approve ALL Gym Registration Requests");
+            System.out.println("GymCentre Options:");
+            System.out.println("\t4. View Pending GymCentre Registration");
+            System.out.println("\t5. Approve GymCentre Registration");
+            System.out.println("\t6. Approve ALL GymCentre Registration Requests");
             System.out.println("7. Quit");
             System.out.print("Enter your choice: ");
             menuOption = in.nextInt();
@@ -80,22 +80,22 @@ public class GymFlipFitAdminMenu {
     }
 
     private void handleGymOwnerRequest(int gymOwnerId, int newStatus) {
-        System.out.println("Gym owner request for ID " + gymOwnerId + " has been " + (newStatus == 1 ? "approved" : "rejected") + ".");
+        System.out.println("GymCentre owner request for ID " + gymOwnerId + " has been " + (newStatus == 1 ? "approved" : "rejected") + ".");
     }
 
     private void approveAllGymOwners() {
         System.out.println("All pending gym owner registration requests have been approved.");
     }
 
-    private List<Gym> getPendingGymRegistrationRequests() {
-        List<Gym> list = new ArrayList<>();
-        list.add(new Gym());
-        list.add(new Gym());
+    private List<GymCentre> getPendingGymRegistrationRequests() {
+        List<GymCentre> list = new ArrayList<>();
+        list.add(new GymCentre());
+        list.add(new GymCentre());
         return list;
     }
 
     private void handleGymRegistrationRequest(int gymId, int newStatus) {
-        System.out.println("Gym registration request for ID " + gymId + " has been " + (newStatus == 1 ? "approved" : "rejected") + ".");
+        System.out.println("GymCentre registration request for ID " + gymId + " has been " + (newStatus == 1 ? "approved" : "rejected") + ".");
     }
 
     private void approveAllGymRegistrationRequests() {

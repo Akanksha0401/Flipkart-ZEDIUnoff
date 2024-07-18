@@ -3,7 +3,7 @@ package com.flipkart.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gym {
+public class GymCentre {
 	private static int idCounter = 1;
 	private int gymID;
 	private String gymName;
@@ -11,41 +11,41 @@ public class Gym {
 	private int noOfSeats;
 	private String gymOwnerID;
 
-	private static List<Gym> gymList = new ArrayList<>();
+	private static List<GymCentre> gymList = new ArrayList<>();
 
 	static {
-		Gym gym1 = new Gym();
+		GymCentre gym1 = new GymCentre();
 		gym1.setGymName("Be Fit");
 		gym1.setLocation("HSR Layout");
 		gym1.setNoOfSeats(30);
 		gym1.setGymOwnerID("1");
 		gymList.add(gym1);
 
-		Gym gym2 = new Gym();
+		GymCentre gym2 = new GymCentre();
 		gym2.setGymName("Cult Fit");
 		gym2.setLocation("Begur");
 		gym2.setNoOfSeats(45);
 		gym2.setGymOwnerID("2");
 		gymList.add(gym2);
 
-		Gym gym3 = new Gym();
-		gym3.setGymName("ABC Gym");
+		GymCentre gym3 = new GymCentre();
+		gym3.setGymName("ABC GymCentre");
 		gym3.setLocation("HSR Layout");
 		gym3.setNoOfSeats(50);
 		gym3.setGymOwnerID("3");
 		gymList.add(gym3);
 	}
 
-	public Gym() {
+	public GymCentre() {
 		this.gymID = idCounter++;
 	}
 
-	public static List<Gym> getGymList() {
+	public static List<GymCentre> getGymList() {
 		return gymList;
 	}
 
-	public static void addGym(Gym gym) {
-		gymList.add(gym);
+	public static void addGym(GymCentre gymCentre) {
+		gymList.add(gymCentre);
 	}
 
 	public int getGymID() {

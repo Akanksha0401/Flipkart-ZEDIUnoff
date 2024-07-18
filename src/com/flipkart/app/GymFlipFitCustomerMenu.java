@@ -1,10 +1,20 @@
 package com.flipkart.app;
 
 import com.flipkart.bean.User;
+import com.flipkart.business.GymCustomerInterface;
+
 import java.util.Scanner;
 
 public class GymFlipFitCustomerMenu {
-    public void displayMenu(User user, Scanner in) {
+    private GymCustomerInterface gymCustomerService;
+
+    public GymFlipFitCustomerMenu(GymCustomerInterface gymCustomerService) {
+        this.gymCustomerService = gymCustomerService;
+    }
+
+   
+
+	public void displayMenu(User user, Scanner in) {
         int menuOption = 1;
         do {
             System.out.println("\n\n ------ Customer Menu Options ------ ");
@@ -20,45 +30,40 @@ public class GymFlipFitCustomerMenu {
 
             switch (menuOption) {
                 case 1:
-                    System.out.println("GymID\tGymName\t\tLocation");
-                    System.out.println("-----------------------------------------------------------");
-                    System.out.println("1\tGold's Gym\t\tNew York");
-                    System.out.println("2\tPlanet Fitness\t\tLos Angeles");
+                    // Ensure gymCustomerService is initialized
+                    if (gymCustomerService != null) {
+                        gymCustomerService.displayAvailableGyms();
+                    } else {
+                        System.out.println("Gym service is not initialized!");
+                    }
                     break;
                 case 2:
-                    System.out.println("\n********************* Available Slots ****************\n");
-                    System.out.println("Slot No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------");
-                    System.out.println("1\t\t10:00-11:00\t\t1");
-                    System.out.println("2\t\t11:00-12:00\t\t1");
-                    System.out.println("Please enter the slot number you want to book: ");
-                    int slotIndex = in.nextInt();
-                    if (slotIndex > 0 && slotIndex <= 2) {
-                        System.out.println("Slot booked successfully.");
+                    if (gymCustomerService != null) {
+                        gymCustomerService.bookSlot();
                     } else {
-                        System.out.println("Unknown Slot!");
+                        System.out.println("Gym service is not initialized!");
                     }
                     break;
                 case 3:
-                    System.out.println("\n********************* Your Bookings ****************\n");
-                    System.out.println("Booking No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------");
-                    System.out.println("1\t\t10:00-11:00\t\t1");
-                    System.out.println("\nPlease enter the booking number to be cancelled: ");
-                    int bookingIndex = in.nextInt();
-                    if (bookingIndex == 1) {
-                        System.out.println("Booking cancelled successfully.");
+                    if (gymCustomerService != null) {
+                        gymCustomerService.cancelBooking();
                     } else {
-                        System.out.println("No such booking number exists!");
+                        System.out.println("Gym service is not initialized!");
                     }
                     break;
                 case 4:
-                    System.out.println("\n********************* Your Bookings ****************\n");
-                    System.out.println("Booking No.\tTimings(24hrs)\t\tGymID\n------------------------------------------------------");
-                    System.out.println("1\t\t10:00-11:00\t\t1");
+                    if (gymCustomerService != null) {
+                        gymCustomerService.displayBookings();
+                    } else {
+                        System.out.println("Gym service is not initialized!");
+                    }
                     break;
                 case 5:
-                    System.out.println("Profile details:");
-                    System.out.println("Username: " + user.getUsername());
-                    System.out.println("Role: " + user.getRole());
+                    if (gymCustomerService != null) {
+                        gymCustomerService.displayProfile(user);
+                    } else {
+                        System.out.println("Gym service is not initialized!");
+                    }
                     break;
                 case 6:
                     System.out.println("You have exited the customer menu");
